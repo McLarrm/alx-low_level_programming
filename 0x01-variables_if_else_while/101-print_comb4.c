@@ -11,18 +11,16 @@ int main(void)
 
 	for (n = '0'; n < '9'; n++)
 	{
-	
 	for (c = n + 1; c <= '9'; c++)
 	{
-
 	for (d = c + 1; d <= '9'; d++)
 	{
 	if ((c != n) != d)
 	{
 	putchar(n);
 	putchar(c);
-	putchar(d);
-	if (c == '7' && d == '8')
+	putchar(q);
+	if (n == '7' && c == '8')
 	continue;
 	putchar(',');
 	putchar(' ');
@@ -30,7 +28,7 @@ int main(void)
 	}
 	}
 	}
-	putchar('\n');
-
+	putchar('\n')
+	
 	return (0);
 }
