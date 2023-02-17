@@ -8,7 +8,6 @@
 int main(void)
 {
 	int n, c, d;
-	
 	for (n = '0'; n < '9'; n++)
 	{
 	for (c = n + 1; c <= '9'; c++)
