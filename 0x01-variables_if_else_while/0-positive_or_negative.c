@@ -9,6 +9,7 @@ int main(void)
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-	/* your code goes there */
+	printf("%d to %d",0,RAND_MAX);
+
 	return (0);
 }
