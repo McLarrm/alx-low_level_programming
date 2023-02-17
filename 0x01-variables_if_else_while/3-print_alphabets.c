@@ -1,9 +1,10 @@
 #include <stdio.h>
+
 /**
- * main - Printing alphabet in lower and uppercase
- *
- * Return: Always 0 (Success)
- */
+*main - Printing in lowercase and uppercase 
+*
+*Return: Always 0 (Success)
+*/
 int main(void)
 {
 	char ch;
@@ -13,6 +14,6 @@ int main(void)
 	for (ch = 'A'; ch <= 'Z'; ch++)
 	putchar(ch);
 	putchar('\n');
-
+	
 	return (0);
 }
