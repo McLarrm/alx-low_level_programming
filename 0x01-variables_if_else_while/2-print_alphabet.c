@@ -7,6 +7,8 @@
  */
 int main(void)
 {
+	int letter;
+
 	putchar("(A..Z)[[:lower:]]\n");
 
 	return (0);
