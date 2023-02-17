@@ -7,14 +7,14 @@
  */
 int main(void)
 {
-	char ch, e, q;
+	char low, e, q;
 
 	e = 'e';
 	q = 'q';
 
-	for (ch = 'a'; ch <= 'z'; ch++)
+	for (low = 'a'; low <= 'z'; low++)
 	{
-	if (ch != 'e' &&  ch != 'q')
+	if (low != 'e' &&  low != 'q')
 	putchar(ch);
 	}
 	putchar('\n');
