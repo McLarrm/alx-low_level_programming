@@ -19,7 +19,7 @@ int main(void)
 	{
 	putchar(n);
 	putchar(c);
-	putchar(q);
+	putchar(d);
 	if (n == '7' && c == '8')
 	continue;
 	putchar(',');
@@ -28,7 +28,7 @@ int main(void)
 	}
 	}
 	}
-	putchar('\n')
+	putchar('\n');
 	
 	return (0);
 }
