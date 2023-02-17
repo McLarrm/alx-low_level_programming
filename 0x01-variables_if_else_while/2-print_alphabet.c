@@ -7,9 +7,11 @@
  */
 int main(void)
 {
-	int letter;
+	char ch = 'a';
 
-	putchar("(A..Z)[[:lower:]]\n");
+	while (;ch <= 'z'; ch++)
+	putchar(c);
+	putchar('\n');
 
 	return (0);
 }
