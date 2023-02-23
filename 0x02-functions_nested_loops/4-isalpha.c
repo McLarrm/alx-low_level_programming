@@ -5,9 +5,9 @@
  * @c: The character to be checked
  * Return: 1 for alphabetic character or 0 for anything else
  */
-int _isalpha(int a)
+int _isalpha(int c)
 {
-	if ((a >= 65 && a <= 99) || (a >= 97 && a <= 122))
+	if ((c >= 65 && c <= 99) || (c >= 97 && c <= 122))
 	{
 	return (1);
 	}
