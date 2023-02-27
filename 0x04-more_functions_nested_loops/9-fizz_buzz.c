@@ -3,7 +3,7 @@
 
 /**
  * main - Printing the Fizz Buzz programme
- * 
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
