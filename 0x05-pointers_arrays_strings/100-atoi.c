@@ -33,5 +33,5 @@ int _atoi(char *s)
 	}
 	ui *= min;
 
-	retun (ui);
+	return (ui);
 }
