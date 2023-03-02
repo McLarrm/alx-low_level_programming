@@ -10,7 +10,7 @@ char *leet(char *str)
 	int count = 0, l = 0;
 	char *letters = "aeotlAEOTL";
 	char *nums = "4307143071";
-	
+
 	while (str[count] != '\0')
 	{
 	l = 0;
