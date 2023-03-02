@@ -7,31 +7,28 @@
  */
 char *cap_string(char *str)
 {
-	int s, c;
-	int trigger;
-	chat nots[] = ",;.!?(){}\n\t\" ";
+	int index = 0;
 
-	for (s = 0, trigger = 0; str[s] != '\0'; s++)
+	while (str[index])
 	{
-	if (str[0] > 96 && str[0] < 123)
-	trigger = 1;
-	for (c = 0; nots[c] != '\0'; c++)
-	{
-	if (nots[c] == str[s])
-	trigger = 1;
-	}
-	if (trigger)
-	{
-	if (str[s] > 96 && str[s] < 123)
-	{
-	str[s] -= 32;
-	trigger = 0;
-	}
-	else if (str[s] > 64 && str[s] < 91)
-	trigger = 0;
-	else if (str[s] > 47 && str[s] < 58)
-	trigger = 0;
-	}
+	while (!(str[index] >= 'a' && str[index] <= 'z'))
+	index++;
+	if (str[index - 1] == ' ' ||
+	str[index - 1] == '\t' ||
+	str[index - 1] == '\n' ||
+	str[index - 1] == ',' ||
+	str[index - 1] == ';' ||
+	str[index - 1] == '.' ||
+	str[index - 1] == '!' ||
+	str[index - 1] == '?' ||
+	str[index - 1] == '"' ||
+	str[index - 1] == '(' ||
+	str[index - 1] == ')' ||
+	str[index - 1] == '{' ||
+	str[index - 1] == '}' ||
+	index == 0)
+	str[index] -= 32;
+	index++;
 	}
 	return (str);
 }
