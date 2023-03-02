@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * infinite_add - Adds two numbers
  * @n1: First string to added to the number
