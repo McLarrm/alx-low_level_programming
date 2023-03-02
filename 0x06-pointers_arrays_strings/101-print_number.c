@@ -10,7 +10,7 @@ void print_number(int n)
 	int power;
 	int neg;
 	int hold;
-	
+
 	neg = 0;
 	power = 1;
 	hold = n;
