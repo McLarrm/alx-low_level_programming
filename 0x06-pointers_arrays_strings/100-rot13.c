@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * rot13 - Converting a string using rot13
  * @str: String
@@ -24,5 +25,6 @@ char *rot13(char *str)
 	}
 	count++;
 	}
-
+	
 	return (str);
+}
