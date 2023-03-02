@@ -3,14 +3,11 @@
 
 /**
  * infinite_add - Adds two numbers
- *
  * @n1: First string added to the number
  * @n2: Second string to be added
  * @r: Array to point and store the resulting of strings
  * @size_r: Size of array
- *
- * Return: The summed string in r. If r is too small for the result,
- * return 0;
+ * Return: The summed string and store it in r
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
