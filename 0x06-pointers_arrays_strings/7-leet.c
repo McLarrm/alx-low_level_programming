@@ -7,23 +7,21 @@
  */
 char *leet(char *str)
 {
-	/*Declaring variables*/
 	int count = 0, l = 0;
 	char *letters = "aeotlAEOTL";
 	char *nums = "4307143071";
-
-	/*Start WHILE*/
+	
 	while (str[count] != '\0')
 	{
 	l = 0;
-	while (letters[l] != '\0') /*Evaluate all cases*/
+	while (letters[l] != '\0')
 	{
-	if (str[count] == letters[i]) /*Match between string a letters*/
+	if (str[count] == letters[l])
 	str[count] = nums[l];
 	l++;
 	}
-	count++; /*Add count*/
-	} /*End WHILE*/
+	count++;
+	}
 
 	return (str);
 }
