@@ -8,6 +8,7 @@
  * @r: Array to point and store the resulting of strings
  * @size_r: Size of array
  * Return: The summed string and store it in r
+ * Return: 0.
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
