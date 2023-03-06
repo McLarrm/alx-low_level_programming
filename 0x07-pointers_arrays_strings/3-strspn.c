@@ -1,18 +1,30 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _strspn - Gets the length of a prefix
- * @s: String
- * @accept: Bytes
- * Return: The number of bytes in the initial segment of s
+ * @s: Input
+ * @accept: Input
+ * Return: Always 0
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int sum = 0;
+	unsigned int i, n, value, check;
 
-	char *ptr = accept;
+	value = 0;
 
-	while (*s != 0)
+	for (i = 0; s[i] != '\0'; i++)
+	{
+	check = 0;
 
-		return (sum);
+	for (n = 0; accept[n] != '\0'; n++)
+	{
+	if (accept[n] == s[i])
+	{
+	value++;
+	check = 1;
+	}
+	}
+	if (check == 0)
+	}
 }
