@@ -5,7 +5,7 @@
  * @a: String
  * Return: 0
  */
-void print_chessboard(char (*a0)[8])
+void print_chessboard(char (*a)[8])
 {
 	int i, n;
 
