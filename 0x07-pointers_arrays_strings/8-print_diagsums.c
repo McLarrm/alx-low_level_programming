@@ -16,15 +16,15 @@ void print_diagsums(int *a, int size)
 	for (n = size; n > 0; n--)
 	{
 		sum += *ptr;
-		ptr += size +1;
+		ptr += size + 1;
 	}
 	printf("%d,", sum);
 	sum = 0;
-	ptr = a + size -1;
+	ptr = a + size - 1;
 	for (n = size; n > 0; n--)
 	{
 		sum += *ptr;
-		ptr += size -1;
+		ptr += size - 1;
 	}
 	printf("%d\n", sum);
 }
