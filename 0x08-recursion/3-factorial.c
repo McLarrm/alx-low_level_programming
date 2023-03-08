@@ -8,7 +8,7 @@
  */
 int factorial(int n)
 {
-	int n;
+	int gvn;
 
 	if (n < 0)
 	{
@@ -18,6 +18,6 @@ int factorial(int n)
 	{
 		return (1);
 	}
-	n = n * factorial(n - 1);
-	return (n);
+	gvn = n * factorial(n - 1);
+	return (gvn);
 }
