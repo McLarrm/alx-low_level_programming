@@ -5,6 +5,7 @@
  * _pow_recursion - Returning the value of a variable
  * @x: Variable
  * @y: String
+ * Return: 1
  */
 int _pow_recursion(int x, int y)
 {
