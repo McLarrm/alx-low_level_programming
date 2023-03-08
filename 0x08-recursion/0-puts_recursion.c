@@ -6,13 +6,13 @@
  * @s: String
  * Retun: 0
  */
-void _puts_recursion(char *s);
+void _puts_recursion(char *s)
 {
 	if (*s == 0)
 	{
-		putchar('\n');
+		puts();
 		return;
 	}
-	putchar("*s");
+	puts("*s");
 	_puts_recursion(s + 1);
 }
