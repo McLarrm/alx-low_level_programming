@@ -6,7 +6,7 @@
  * @s: String
  * Return: 1
  */
-int _strlen_recursion(int *s)
+int _strlen_recursion(char *s)
 {
 	if (*s == 0)
 		return (0);
@@ -20,11 +20,11 @@ int _strlen_recursion(int *s)
  */
 int palindrome_finder(char *s, int n)
 {
-	if (n < n)
+	if (n < 1)
 	{
 		return (1);
 		if (*s == *(s + n))
-			return (palindrome_finder(s + 1, 1 - 2));
+			return (palindrome_finder(s + 1, n - 2));
 	}
 	return (0);
 }
