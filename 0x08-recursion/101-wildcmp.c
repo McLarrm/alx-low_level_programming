@@ -1,6 +1,13 @@
 #include "main.h"
 
 /**
+ * wildmode - Compares two string
+ * @s1: First string
+ * @s2: Second string
+ * Return: 1
+ */
+int wildmode(char *s1, char *s2);
+/**
  * exactmode - Comparing two strings
  * @s1: First string
  * @s2: Second string
