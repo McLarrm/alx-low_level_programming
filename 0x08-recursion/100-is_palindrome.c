@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _strlen_recursion - Returning 1 to a string if palindromed
@@ -21,11 +20,9 @@ int _strlen_recursion(char *s)
 int palindrome_finder(char *s, int n)
 {
 	if (n < 1)
-	{
 		return (1);
-		if (*s == *(s + n))
-			return (palindrome_finder(s + 1, n - 2));
-	}
+	if (*s == *(s + n))
+		return (palindrome_finder(s + 1, n - 2));
 	return (0);
 }
 /**
@@ -36,5 +33,6 @@ int palindrome_finder(char *s, int n)
 int is_palindrome(char *s)
 {
 	int len = _strlen_recursion(s);
+
 	return (palindrome_finder(s, len - 1));
 }
