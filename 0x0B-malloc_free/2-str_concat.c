@@ -14,7 +14,7 @@ char *str_concat(char *s1, char *s2)
 	char *pointer, *ret;
 
 	size1 = 0, size2 = 0;
-	pointer = s1;
+	pointer == s1;
 	if (s1)
 		while (*pointer++)
 			size1++;
