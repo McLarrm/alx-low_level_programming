@@ -7,17 +7,17 @@
  * @c: Array
  * Return: NULL
  */
-char *create(unsigned int size, char c)
+char *create_array(unsigned int size, char c)
 {
-	char *first;
+	char *array;
 	unsigned int i;
 
 	if (size <= 0)
 		return (NULL);
-	first = malloc(size);
-	if (first == NULL)
+	array = malloc(size);
+	if (array == NULL)
 		return (NULL);
 	for (i = 0; i < size; i++)
-		first[i] = c;
-	return (first);
+		array[i] = c;
+	return (NULL);
 }
