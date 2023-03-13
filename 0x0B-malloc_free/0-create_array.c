@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -8,15 +9,15 @@
  */
 char *create(unsigned int size, char c)
 {
-	char *array;
+	char *first;
 	unsigned int i;
 
 	if (size <= 0)
 		return (NULL);
-	array = malloc(size);
-	if (array == NULL)
+	first = malloc(size);
+	if (first == NULL)
 		return (NULL);
 	for (i = 0; i < size; i++)
-		array[i] = c;
-	return (NULL);
+		first[i] = c;
+	return (first);
 }
