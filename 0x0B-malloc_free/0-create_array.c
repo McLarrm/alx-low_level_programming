@@ -19,5 +19,5 @@ char *create(unsigned int size, char c)
 		return (NULL);
 	for (i = 0; i < size; i++)
 		array[i] = c;
-	return (array);
+	return (NULL);
 }
