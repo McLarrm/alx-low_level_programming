@@ -4,8 +4,8 @@
 
 /**
  * str_concat - Concatenates two strings
- * s1: First string
- * s2: Second string
+ * @s1: First string
+ * @s2: Second string
  * Return: NULL
  */
 char *str_concat(char *s1, char *s2)
