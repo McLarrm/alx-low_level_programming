@@ -10,10 +10,9 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int size, i;
+	int size = 0, i;
 	char *pointer, *ret, retpointer;
-
-	size = 0;
+	
 	if (ac == 0 || !av)
 		return (NULL);
 	for (i = 0; i < ac; i++)
