@@ -5,7 +5,7 @@
 /**
  * argstostr - Concatenates all the arguments of a program
  * @ac: Argument count
- * @ac: Argument vector
+ * @av: Argument vector
  * Return: Pointer to a new string or NULL if it fails
  */
 char *argstostr(int ac, char **av)
