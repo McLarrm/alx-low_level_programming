@@ -8,7 +8,7 @@
  * @height: Integer
  * Return: 0
  */
-void free-grid(int **grid, int height)
+void free_grid(int **grid, int height)
 {
 	if (!grid)
 		return;
