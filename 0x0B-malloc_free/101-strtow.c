@@ -4,14 +4,15 @@
 
 int word_len(char *str);
 int count_words(char *str);
-char **strtow(char *str);
 
-// word_len - Locates the index
-// @str: String
-// Return: NULL
+/**
+ * word_len - Locates the index
+ * @str: String
+ * Return: NULL
+ */
 int word_len(char *str)
 {
-	int index = o, len = 0;
+	int index = 0, len = 0;
 
 	while (*(str + index) && *(str + index) != ' ')
 	{
@@ -21,9 +22,11 @@ int word_len(char *str)
 	return (len);
 }
 
-// count_words - Counts numbers
-// @str: String
-// Return: NULL
+/**
+ * count_words - Counts numbers
+ * @str: String
+ * Return: NULL
+ */
 int count_words(char *str)
 {
 	int index = 0, words = 0, len = 0;
