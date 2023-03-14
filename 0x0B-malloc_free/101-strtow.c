@@ -2,9 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int word_len(char *str);
-int count_words(char *str);
-
 /**
  * word_len - Locates the index
  * @str: String
