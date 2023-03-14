@@ -32,7 +32,7 @@ char *argstostr(int ac, char **av)
 		{
 			*retpointer = *pointer;
 		}
-		*retpointer = '\n'
+		*retpointer++ = '\n';
 	}
 	return (ret);
 }
