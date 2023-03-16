@@ -82,7 +82,7 @@ char *trimzero(char *s)
  * @argv: Argument vector
  * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	long int len1, len2, lenres, i, j;
 	char *res;
