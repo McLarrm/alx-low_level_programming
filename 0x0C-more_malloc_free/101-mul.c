@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 	}
 	argv[2] = trimzero(argv[2]);
 	argv[1] = trimzero(argv[1]);
-	if ((*argv == '0') || (*argv[2] == '0'))
+	if ((*argv[1] == '0') || (*argv[2] == '0'))
 	{
 		_prntstr("0\n");
 		return (0);
