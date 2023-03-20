@@ -1,7 +1,7 @@
-#ifndef FUNCLIKEH
-#define FUNCLIKEH
+#ifndef ABS
+#define ABS
 
-#define ABS(X) ((X) < 0 ? _(X) : (X))
+#define ABS(X) ((X) < 0 ? -(X) : (X))
 
 typedef int asdf;
 
