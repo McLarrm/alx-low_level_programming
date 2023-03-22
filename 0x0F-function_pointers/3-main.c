@@ -1,6 +1,5 @@
 #include "3-calc.h"
 #include <stdio.h>
-#include <stdlb.h>
 
 /**
  * main - Performs simple operation
