@@ -12,12 +12,12 @@ int main(int argc, char *argv[])
 	unsigned char *f = (unsigned char *) (long int) main;
 	int n, i;
 
-	if (ac != 2)
+	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-	n = atoi(av[1]);
+	n = atoi(argv[1]);
 	if (n < 0)
 	{
 		printf("Error\n");
