@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
-  * get_op_func - Performs simple operation 
+  * get_op_func - Performs simple operation
   * @s: String
   * Return: 0
   */
