@@ -4,8 +4,8 @@
 #include "variadic_functions.h"
 
 /**
- * print_numbers - Prints integer argument with seperator
- * @seperator: Seperator
+ * print_numbers - Prints integer argument with separator
+ * @separator: Separator
  * @n: Number of arguments
  * Return: 0
  */
@@ -23,7 +23,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	if (n > 0)
 		printf("%d", va_arg(list, int));
 	for (i = 1; i < n; i++)
-		printf("%d", sep, va_arg(list, int));
+		printf("%s%d", sep, va_arg(list, int));
 	printf("\n");
 	va_end(list);
 }
