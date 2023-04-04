@@ -3,27 +3,28 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - Prints a linked list
- * @head: Pointer to the first node of the list
- * Return: Number of nodes in the list
+ * print_listint_safe - Prints a linked list of integers
+ * @head: Pointer to the head of the linked list
+ * Return: The number of nodes in the list
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *tmp = head, *check;
 	size_t count = 0;
 
-	while (tmp != NULL)
+	while (head != NULL)
 	{
-		printf("[%p] %d\n", (void *) tmp, tmp->n);
+		printf("[%p] %d\n", (void *) head, head->n);
 		count++;
-		check = tmp;
-		tmp = tmp->next;
-		if (check <= tmp)
+		if (head <= head->next)
 		{
-			printf("-> [%p] %d\n", (void *) tmp, tmp->n);
-			exit(98);
+			printf("-> [%p] %d\n", (void *) head->next, head->next->n);
+			break;
 		}
+		head = head->next;
 	}
+
+	if (count == 0)
+		exit(98);
 
 	return (count);
 }
