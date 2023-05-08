@@ -3,17 +3,76 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
+#include <string.h>
 
-#define BUFFER_SIZE 128
+#define ERR(fmt, ...) fprintf(stderr, "Error: " fmt "\n", ##__VA_ARGS__)
+#define ERR_SYSCALL(syscall) ERR(#syscall " failed: %s", strerror(errno))
 
 /**
- * error_exit - Prints an error message and exits with error code 98
- * @message: Error message to be printed
+ * print_elf_header - Prints an error message and exits with error code 98
+ * @header: Error message to be printed
  */
-void error_exit(char *message)
+void print_elf_header(Elf64_Ehdr *header)
 {
-	dprintf(STDERR_FILENO, "%s\n", message);
-	exit(98);
+	int i;
+
+	printf("ELF Header:\n");
+	printf("  Magic:   ");
+
+	for (i = 0; i < EI_NIDENT; i++)
+	{
+		printf("%02x ", header->e_ident[i]);
+	}
+
+	printf("\n");
+	printf("  Class:                             ");
+
+	switch (header->e_ident[EI_CLASS])
+	{
+		case ELFCLASSNONE: printf("Invalid class\n"); break;
+		case ELFCLASS32:   printf("ELF32\n"); break;
+		case ELFCLASS64:   printf("ELF64\n"); break;
+		default:           printf("Unknown\n"); break;
+	}
+	printf("  Data:                              ");
+
+	switch (header->e_ident[EI_DATA])
+	{
+		case ELFDATANONE: printf("Invalid data encoding\n"); break;
+		case ELFDATA2LSB: printf("2's complement, little endian\n"); break;
+		case ELFDATA2MSB: printf("2's complement, big endian\n"); break;
+		default:          printf("Unknown\n"); break;
+	}
+	printf("  Version:                           %d (current)\n", header->e_ident[EI_VERSION]);
+	printf("  OS/ABI:                            ");
+
+	switch (header->e_ident[EI_OSABI])
+	{
+		case ELFOSABI_SYSV:        printf("UNIX - System V\n"); break;
+		case ELFOSABI_HPUX:        printf("UNIX - HP-UX\n"); break;
+		case ELFOSABI_NETBSD:      printf("UNIX - NetBSD\n"); break;
+		case ELFOSABI_LINUX:       printf("UNIX - Linux\n"); break;
+		case ELFOSABI_SOLARIS:     printf("UNIX - Solaris\n"); break;
+		case ELFOSABI_IRIX:        printf("UNIX - IRIX\n"); break;
+		case ELFOSABI_FREEBSD:     printf("UNIX - FreeBSD\n"); break;
+		case ELFOSABI_TRU64:       printf("UNIX - TRU64\n"); break;
+		case ELFOSABI_ARM:         printf("ARM\n"); break;
+		case ELFOSABI_STANDALONE:  printf("Standalone App\n"); break;
+		default:                   printf("Unknown\n"); break;
+	}
+	printf("  ABI Version:                       %d\n", header->e_ident[EI_ABIVERSION]);
+	printf("  Type:                              ");
+	switch (header->e_type)
+	{
+		case ET_NONE:    printf("No file type\n"); break;
+		case ET_REL:     printf("Relocatable file\n"); break;
+		case ET_EXEC:    printf("Executable file\n"); break;
+		case ET_DYN:     printf("Shared object file\n"); break;
+		case ET_CORE:    printf("Core file\n"); break;
+		default:         printf("Unknown\n"); break;
+	}
+	printf("  Entry point address:               0x%lx\n", header->e_entry);
 }
 /**
  * main - Displays the information contained in the ELF header at the start of an ELF file.
@@ -23,48 +82,36 @@ void error_exit(char *message)
  */
 int main(int argc, char *argv[])
 {
-	int fd, i;
-	ssize_t bytes_read;
-	Elf64_Ehdr header;
-	char buffer[BUFFER_SIZE];
-	
+	int fd;
+
 	if (argc != 2)
-		error_exit("Usage: elf_header elf_filename");
-	
+	{
+		ERR("Usage: %s elf_filename", argv[0]);
+		return (98);
+	}
+
 	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		error_exit("Error: Cannot read ELF file");
-	
-	bytes_read = read(fd, &header, sizeof(header));
-	if (bytes_read != sizeof(header) || header.e_ident[EI_MAG0] != ELFMAG0 ||
-			header.e_ident[EI_MAG1] != ELFMAG1 ||
-			header.e_ident[EI_MAG2] != ELFMAG2 ||
-			header.e_ident[EI_MAG3] != ELFMAG3)
-		error_exit("Error: Not an ELF file");
-	
-	printf("ELF Header:\n");
-	printf("  Magic:   ");
-	for (i = 0; i < EI_NIDENT; i++)
-		printf("%02x ", header.e_ident[i]);
-	printf("\n");
-	printf("  Class:                             %s\n",
-			header.e_ident[EI_CLASS] == ELFCLASS64 ? "ELF64" :
-			header.e_ident[EI_CLASS] == ELFCLASS32 ? "ELF32" :
-			"Invalid Class");
-	printf("  Data:                              %s\n",
-			header.e_ident[EI_DATA] == ELFDATA2LSB ? "2's complement, little endian" :
-			header.e_ident[EI_DATA] == ELFDATA2MSB ? "2's complement, big endian" :
-			"Invalid Data Encoding");
-	printf("  Version:                           %d%s\n",
-			header.e_ident[EI_VERSION],
-			header.e_ident[EI_VERSION] == EV_CURRENT ? " (current)" : "");
-	printf("  OS/ABI:                            %s\n",
-			header.e_ident[EI_OSABI] == ELFOSABI_SYSV ? "UNIX - System V" :
-			header.e_ident[EI_OSABI] == ELFOSABI_HPUX ? "UNIX - HP-UX" :
-			header.e_ident[EI_OSABI] == ELFOSABI_NETBSD ? "UNIX - NetBSD" :
-			header.e_ident[EI_OSABI] == ELFOSABI_LINUX ? "UNIX - Linux" :
-			header.e_ident[EI_OSABI] == ELFOSABI_SOLARIS ? "UNIX - Solaris" :
-			header.e_ident[EI_OSABI] == ELFOSABI_IRIX ? "UNIX - IRIX" :
-			header.e_ident[EI_OSABI] == ELFOSABI_FREEBSD ? "UNIX - FreeBSD" :
-			header.e_ident[EI_OSABI] == ELFOSABI_TRU64 ? "UNIX - TRU64" :
-			header.e_ident[EI_OSABI] == ELFOSABI_ARM_AEABI ? "ARM EABI"
+
+	if (fd < 0)
+	{
+		ERR_SYSCALL(open);
+		return (1);
+	}
+
+	Elf64_Ehdr header;
+	if (read(fd, &header, sizeof(header)) != sizeof(header))
+	{
+		ERR_SYSCALL(read);
+		return (1);
+	}
+
+	print_elf_header(&header);
+
+	if (close(fd) < 0)
+	{
+		ERR_SYSCALL(close);
+		return (1);
+	}
+
+	return (0);
+}
