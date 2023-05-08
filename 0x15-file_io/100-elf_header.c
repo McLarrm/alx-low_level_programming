@@ -6,8 +6,8 @@
 #include <errno.h>
 #include <string.h>
 
-#define ERR(fmt, ...) fprintf(stderr, "Error: " fmt "\n", ##__VA_ARGS__)
-#define ERR_SYSCALL(syscall) ERR(#syscall " failed: %s", strerror(errno))
+#define ERR(fmt, arg1, arg2) fprintf(stderr, "Error: " fmt "\n", arg1, arg2)
+#define ERR_SYSCALL(syscall) ERR("%s failed: %s", #syscall, strerror(errno))
 
 /**
  * print_elf_header - Prints an error message and exits with error code 98
@@ -83,6 +83,7 @@ void print_elf_header(Elf64_Ehdr *header)
 int main(int argc, char *argv[])
 {
 	int fd;
+	Elf64_Ehdr header;
 
 	if (argc != 2)
 	{
@@ -97,8 +98,6 @@ int main(int argc, char *argv[])
 		ERR_SYSCALL(open);
 		return (1);
 	}
-
-	Elf64_Ehdr header;
 	if (read(fd, &header, sizeof(header)) != sizeof(header))
 	{
 		ERR_SYSCALL(read);
