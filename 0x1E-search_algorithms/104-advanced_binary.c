@@ -2,6 +2,46 @@
 #include "search_algos.h"
 
 /**
+ * advanced_binary_recursive - Recursive binary search function
+ * @array: Pointer to the first element of the array to search
+ * @start: The index to start searching from
+ * @end: The index to end the search at
+ * @value: The value to search for
+ * Return: The index where the value is located or -1 if not found
+ */
+int advanced_binary_recursive(int *array, size_t start, size_t end, int value)
+{
+	size_t i;
+	size_t mid;
+
+	if (start > end)
+		return (-1);
+
+	printf("Searching in array: ");
+	for (i = start; i <= end; i++)
+	{
+		printf("%d", array[i]);
+		if (i < end)
+			printf(", ");
+	}
+	printf("\n");
+
+	mid = (start + end) / 2;
+
+	if (array[mid] == value)
+	{
+		if (mid > 0 && array[mid - 1] == value)
+			return (advanced_binary_recursive(array, start, mid, value));
+		return (mid);
+	}
+
+	if (array[mid] < value)
+		return (advanced_binary_recursive(array, mid + 1, end, value));
+
+	return (advanced_binary_recursive(array, start, mid - 1, value));
+}
+
+/**
  * advanced_binary - Searches for a value in a sorted array using
  * advanced binary search.
  * @array: Pointer to the first element of the array to search
@@ -14,51 +54,5 @@ int advanced_binary(int *array, size_t size, int value)
 	if (!array || size == 0)
 		return (-1);
 
-	return (help_binary(array, value, 0, size - 1));
-}
-
-/**
- * help_binary - Searches for a value in an array of integers using recursion
- * @array: Array to search the value in
- * @value: Value to look for
- * @lo: Index of the low bound
- * @hi: Index of the high bound
- * Return: The index of the found value, or -1 if not found
- */
-int help_binary(int *array, int value, size_t lo, size_t hi)
-{
-	size_t mid;
-
-	array_print(array, lo, hi);
-	if (hi == lo && array[lo] != value)
-		return (-1);
-
-	mid = ((hi - lo) / 2) + lo;
-	if (array[mid] == value)
-		return (mid);
-	if (array[mid] < value)
-		return (help_binary(array, value, mid + 1, hi));
-	if (array[mid] > value)
-		return (help_binary(array, value, lo, mid - 1));
-	return (-1);
-}
-
-/**
- * array_print - Prints an array
- * @array: Array to print
- * @lo: Index of the low bound
- * @hi: Index of the high bound
- */
-void array_print(int *array, size_t lo, size_t hi)
-{
-	size_t i;
-
-	printf("Searching in array: ");
-	for (i = lo; i <= hi; i++)
-	{
-		printf("%d", array[i]);
-		if (i < hi)
-			printf(", ");
-	}
-	printf("\n");
+	return (advanced_binary_recursive(array, 0, size - 1, value));
 }
