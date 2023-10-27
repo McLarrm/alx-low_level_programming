@@ -12,7 +12,7 @@
 int exponential_search(int *array, size_t size, int value)
 {
 	size_t bound = 1;
-	size_t low, high;
+	size_t low, high, i;
 
 	if (!array || size == 0)
 		return (-1);
@@ -32,7 +32,7 @@ int exponential_search(int *array, size_t size, int value)
 		size_t mid = (low + high) / 2;
 
 		printf("Searching in array: ");
-		for (size_t i = low; i <= high; i++)
+		for (i = low; i <= high; i++)
 		{
 			printf("%d", array[i]);
 			if (i < high)
